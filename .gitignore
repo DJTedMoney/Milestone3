@@ -1,0 +1,9 @@
+.DS_Store
+/Whale/Library/
+/Whate/obj/
+/Whale/Temp/
+/Whale/*.csproj
+/Whale/*.pidb
+/Whale/*.unityproj
+/Whale/*.sln
+/Whale/*.userprefs
