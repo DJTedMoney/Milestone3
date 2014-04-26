@@ -4,7 +4,7 @@ using System.Collections;
 public class LoginBox : MonoBehaviour 
 {
 	public string userName;
-	public string passWord;
+	string passWord;
 	
 	public GUIText grafxText;
 	public GameManager manager;
@@ -29,13 +29,13 @@ public class LoginBox : MonoBehaviour
 		{
 			GUI.Label(new Rect(130, 200, 100, 20), "UserName : ");
 			
-			userName = GUI.TextField(new Rect(200, 200, 100, 20), userName );
+			userName = GUI.TextField(new Rect(200, 200, 200, 20), userName );
 			
 			GUI.Label(new Rect(130, 220, 100, 20), "PassWord : ");
 			
-			passWord = GUI.PasswordField(new Rect(200, 220, 100, 20), passWord, "%"[0], 25);
+			passWord = GUI.PasswordField(new Rect(200, 220, 200, 20), passWord, "%"[0], 25);
 			
-			if(GUI.Button (new Rect (200, 170, 100, 20), "Connect") )
+			if(GUI.Button (new Rect (250, 170, 100, 20), "Connect") )
 			{
 				//grafxText.text = "Connect";
 				
