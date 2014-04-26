@@ -1,0 +1,23 @@
+
+verify that Whale works
+
+get Milestone 3 whale project running in Unity
+
+add network to the game
+
+connect to the server, establish initial handshake
+
+add database layer
+
+store username-password combinations on the server as a database
+
+(the database is stored on the server)
+
+server can create new user-password combinations
+
+	can check password for a given username
+
+demonstrate that the handshake happens - plays like solo version after that
+
+	(handshake verify - server send strings to the player which get printed on the screen)
+
