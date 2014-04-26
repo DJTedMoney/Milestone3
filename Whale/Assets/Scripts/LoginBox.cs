@@ -33,7 +33,7 @@ public class LoginBox : MonoBehaviour
 			
 			GUI.Label(new Rect(130, 220, 100, 20), "PassWord : ");
 			
-			passWord = GUI.TextField(new Rect(200, 220, 100, 20), passWord);
+			passWord = GUI.PasswordField(new Rect(200, 220, 100, 20), passWord, "%"[0], 25);
 			
 			if(GUI.Button (new Rect (200, 170, 100, 20), "Connect") )
 			{
