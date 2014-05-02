@@ -25,6 +25,8 @@ namespace SQLiteTest
             createTable();
             fillTable();
 
+            addElement("farble", "deblarg");
+
             printHighscores();
         }
 
@@ -41,10 +43,11 @@ namespace SQLiteTest
             m_dbConnection.Open();
         }
 
-        // Creates a table named 'highscores' with two columns: name (a string of max 20 characters) and score (an int)
+        // Creates a table named 'highscores' with two columns: name (a string of max 20 characters) and password (a string of max 20 characters)
+        // password = pw
         void createTable()
         {
-            string sql = "create table highscores (name varchar(20), score int)";
+            string sql = "create table users (name varchar(20), pw varchar(12) )";
 
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
@@ -55,16 +58,23 @@ namespace SQLiteTest
         void fillTable()
         {
 
-            string sql = "insert into highscores (name, score) values ('Me', 3000)";
+            string sql = "insert into users (name, pw) values ('Me', 3000)";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
 
-            sql = "insert into highscores (name, score) values ('Myself', 6000)";
+            sql = "insert into users (name, pw) values ('Myself', 6000)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
 
-            sql = "insert into highscores (name, score) values ('And I', 9001)";
+            sql = "insert into users (name, pw) values ('And I', 9001)";
             command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+        }
+
+        void addElement(string userName, string newPW)
+        {
+            string sql = "insert into users (name, pw) values (" + userName + ", " + newPW + ")";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
 
@@ -72,17 +82,16 @@ namespace SQLiteTest
         void printHighscores()
         {
 
-            string sql = "select * from highscores order by score desc";
+            string sql = "select * from users order by pw desc";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                Console.WriteLine("Name: " + reader["name"] + "\tScore: " + reader["score"]);
+                Console.WriteLine("Name: " + reader["name"] + "\tPassword: " + reader["pw"]);
             }
 
             Console.ReadLine();
-
         }
     }
 }
