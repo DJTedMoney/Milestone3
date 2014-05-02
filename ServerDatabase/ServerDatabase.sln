@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{A7297558-7B9D-4CE9-93F7-DCDEECFD3F29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerDatabase", "ServerDatabase\ServerDatabase.csproj", "{A3550A99-00BE-435C-82C2-E5F073A537A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A7297558-7B9D-4CE9-93F7-DCDEECFD3F29}.Debug|x86.ActiveCfg = Debug|x86
-		{A7297558-7B9D-4CE9-93F7-DCDEECFD3F29}.Debug|x86.Build.0 = Debug|x86
-		{A7297558-7B9D-4CE9-93F7-DCDEECFD3F29}.Release|x86.ActiveCfg = Release|x86
-		{A7297558-7B9D-4CE9-93F7-DCDEECFD3F29}.Release|x86.Build.0 = Release|x86
+		{A3550A99-00BE-435C-82C2-E5F073A537A5}.Debug|x86.ActiveCfg = Debug|x86
+		{A3550A99-00BE-435C-82C2-E5F073A537A5}.Debug|x86.Build.0 = Debug|x86
+		{A3550A99-00BE-435C-82C2-E5F073A537A5}.Release|x86.ActiveCfg = Release|x86
+		{A3550A99-00BE-435C-82C2-E5F073A537A5}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
