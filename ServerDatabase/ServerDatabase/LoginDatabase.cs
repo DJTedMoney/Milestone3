@@ -52,28 +52,65 @@ namespace SQLiteTest
             command.ExecuteNonQuery();
         }
 
-        public void addElement(string userName, string newPW)
+        void addElement(string userName, string newPW)
         {
+            // true if user exists in the database, false if the user is a new user
+            bool returningUser = checkIfUserNameExists(userName);
+         
             string sql = "insert into users (name, pw) values (' " + userName + " ', ' " + newPW + " ')";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
 
-        public bool checkIfUserNameExists(string userName)
+        void verifyPassword(string loginName, string loginPW)
+        {
+            // check that newPW matches password of userName
+            string sql = "select * from users where name= ' " + loginName + " ', ' " + loginPW + " ')";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            bool pwMatch = reader.Read();
+
+            if (pwMatch)
+            {
+                Console.WriteLine("    Password is a match    ");
+                // return true;
+            }
+
+            Console.WriteLine("  &&  Password is NOT a match  ");
+            // return false;
+        }
+
+        bool checkIfUserNameExists(string userName)
         {
             string sql = "select * from users where name= ' " + userName + " ' ";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
+            bool userExists = reader.Read();
 
-            if (reader.Read() )
+            if (userExists )
             {
                 Console.WriteLine("  found it!");
                 return true;
             }
 
-
             Console.WriteLine("   didn't find it");
             return false;
+        }
+
+        public void login(string checkName, string checkPW)
+        {
+            bool returningUser = checkIfUserNameExists(checkName);
+
+            if (returningUser)
+            {
+                verifyPassword(checkName, checkPW);
+            }
+
+            else
+            {
+                addElement(checkName, checkPW);
+            }
         }
 
         // Writes the highscores to the console sorted on score in descending order.
