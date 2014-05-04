@@ -8,14 +8,11 @@ namespace SQLiteTest
     class ServerDatabase
     {
         
-        LoginDatabase dB = new LoginDatabase();
+        static LoginDatabase dB;
+
+        static ServerDatabase p = new ServerDatabase();
         
         static void Main(string[] args)
-        {
-            ServerDatabase p = new ServerDatabase();
-        }
-
-        public ServerDatabase()
         {
             dB.createNewDatabase();
             dB.connectToDatabase();
@@ -26,8 +23,14 @@ namespace SQLiteTest
 
             dB.addElement("farble", "deblarg");
             dB.checkIfUserNameExists("glory");
+            dB.checkIfUserNameExists("farble");
 
             dB.printUsers();
+        }
+
+        public ServerDatabase()
+        {
+            dB = new LoginDatabase();
         }
         
     }

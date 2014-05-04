@@ -29,8 +29,7 @@ namespace SQLiteTest
         // password = pw
         public void createTable()
         {
-            string sql = "create table users (name varchar(20), pw varchar(12) )";
-
+            string sql = "create table users (name varchar(32), pw varchar(32) )";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
@@ -62,8 +61,18 @@ namespace SQLiteTest
 
         public bool checkIfUserNameExists(string userName)
         {
-            string sql = "select " + userName + " from users order by name desc";
+            string sql = "select * from users where name= ' " + userName + " ' ";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
 
+            if (reader.Read() )
+            {
+                Console.WriteLine("  found it!");
+                return true;
+            }
+
+
+            Console.WriteLine("   didn't find it");
             return false;
         }
 
