@@ -1,4 +1,6 @@
 
+check that to do list is updated in Milestone 3  //  
+
 verify that Whale works  //  
 
 get Milestone 3 whale project running in Unity  //  

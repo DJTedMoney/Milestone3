@@ -1,0 +1,7 @@
+c:\users\barbarois\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+c:\users\barbarois\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+c:\users\barbarois\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\System.Data.SQLite.dll
+c:\users\barbarois\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\System.Data.SQLite.xml
+c:\users\barbarois\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+c:\users\barbarois\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+c:\users\barbarois\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
