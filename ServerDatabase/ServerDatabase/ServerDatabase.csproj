@@ -46,9 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Encryptor.cs" />
     <Compile Include="LoginDatabase.cs" />
+    <Compile Include="PlayerSocket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerDatabase.cs" />
+    <Compile Include="TCPServer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

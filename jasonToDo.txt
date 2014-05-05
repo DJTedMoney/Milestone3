@@ -23,3 +23,4 @@ demonstrate that the handshake happens - plays like solo version after that  //
 
 	(handshake verify - server send strings to the player which get printed on the screen)  //  
 
+database needs to be able to tell ServerDatabase to send TCP packet for successful login and unsuccessful login  //  
