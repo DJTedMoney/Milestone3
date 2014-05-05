@@ -5,10 +5,9 @@ C:\Users\Barbarois\Documents\gitRepositories\Milestone3\ServerDatabase\ServerDat
 C:\Users\Barbarois\Documents\gitRepositories\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.exe
 C:\Users\Barbarois\Documents\gitRepositories\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.pdb
 C:\Users\Barbarois\Documents\gitRepositories\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ServerDatabase.csprojResolveAssemblyReference.cache
-C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.exe
-C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.pdb
 C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\ConsoleApplication1.exe
 C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\ConsoleApplication1.pdb
 C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\System.Data.SQLite.dll
 C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\System.Data.SQLite.xml
-C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ServerDatabase.csprojResolveAssemblyReference.cache
+C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.pdb

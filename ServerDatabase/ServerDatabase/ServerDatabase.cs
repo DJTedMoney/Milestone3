@@ -20,11 +20,12 @@ namespace SQLiteTest
 
             dB.fillTable();
 
-            dB.login("farble", "deblarg");
-            // dB.checkIfUserNameExists("glory");
-            // dB.checkIfUserNameExists("farble");
+            dB.login("Farble", "deblarg");
+            dB.login("glory", "power");
+            dB.login("Farble", "deblarg");
 
-
+            dB.login("Myself", "6000");
+            dB.login("Myself", "asdf");
 
             dB.printUsers();
         }

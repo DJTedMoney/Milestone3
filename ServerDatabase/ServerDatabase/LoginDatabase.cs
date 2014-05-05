@@ -38,7 +38,7 @@ namespace SQLiteTest
         // As you can see, there is quite some duplicate code here, we'll solve this in part two.
         public void fillTable()
         {
-
+            /*
             string sql = "insert into users (name, pw) values ('Me', 3000)";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
@@ -50,14 +50,17 @@ namespace SQLiteTest
             sql = "insert into users (name, pw) values ('And I', 9001)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
+             */
+
+            login("Me", "3000");
+            login("Myself", "6000");
+            login("And I", "9001");
+             
         }
 
         void addElement(string userName, string newPW)
         {
-            // true if user exists in the database, false if the user is a new user
-            bool returningUser = checkIfUserNameExists(userName);
-         
-            string sql = "insert into users (name, pw) values (' " + userName + " ', ' " + newPW + " ')";
+            string sql = "insert into users (name, pw) values ('" + userName + "', '" + newPW + "')";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
@@ -65,42 +68,57 @@ namespace SQLiteTest
         void verifyPassword(string loginName, string loginPW)
         {
             // check that newPW matches password of userName
-            string sql = "select * from users where name= ' " + loginName + " ', ' " + loginPW + " ')";
+            string sql = "select * from users where name= '" + loginName + "'";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
 
-            bool pwMatch = reader.Read();
+            /*
+            Console.WriteLine("      inside verify password " + loginName);
+            Console.WriteLine("  verivy password values &" + reader["pw"] + "&  %" + loginPW + "% ");
+            Console.WriteLine( reader["pw"].Equals(loginPW) );
+            Console.WriteLine(loginPW.Equals(reader["pw"]) );
+            */
 
-            if (pwMatch)
+            // the password is a match
+            if (reader["pw"].Equals(loginPW) )
             {
-                Console.WriteLine("    Password is a match    ");
+                Console.WriteLine("    Password is a match    " + loginName);
                 // return true;
+
+                // send TCP packet back to client setting player as logged in
             }
 
-            Console.WriteLine("  &&  Password is NOT a match  ");
-            // return false;
+            else
+            {
+                Console.WriteLine("  &&  Password is NOT a match  " + loginName);
+                // return false;
+
+                // send TCP packet back to client that login failed 
+            }
         }
 
         bool checkIfUserNameExists(string userName)
         {
-            string sql = "select * from users where name= ' " + userName + " ' ";
+            string sql = "select * from users where name= '" + userName + "'";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
             bool userExists = reader.Read();
 
             if (userExists )
             {
-                Console.WriteLine("  found it!");
+                // Console.WriteLine("  found it! " + userName);
                 return true;
             }
 
-            Console.WriteLine("   didn't find it");
+            // Console.WriteLine("   didn't find it " + userName);
             return false;
         }
 
         public void login(string checkName, string checkPW)
         {
             bool returningUser = checkIfUserNameExists(checkName);
+
+            // Console.WriteLine("  calling login " + checkName);
 
             if (returningUser)
             {
@@ -121,7 +139,7 @@ namespace SQLiteTest
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
 
-            while (reader.Read())
+            while (reader.Read() )
             {
                 Console.WriteLine("Name: " + reader["name"] + "\tPassword: " + reader["pw"]);
             }
