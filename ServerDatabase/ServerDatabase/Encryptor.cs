@@ -5,6 +5,11 @@ using System.Text;
 
 using System.Security.Cryptography;
 
+
+//      FOUND THIS EXAMPLE OF HOW TO USE THE CRYPTOGRAPHY LIBRARY FOR C#
+//      EXAMPLE FROM http://www.codeproject.com/Articles/463390/Password-Encryption-using-MD-Hash-Algorithm-in-Cs
+
+
 namespace SQLiteTest
 {
     public static class Encryptor
