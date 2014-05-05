@@ -9,6 +9,8 @@ namespace SQLiteTest
     {
         static LoginDatabase dB;
 
+        static TCPServer server;
+
         static ServerDatabase p = new ServerDatabase();
         
         static void Main(string[] args)
@@ -33,6 +35,8 @@ namespace SQLiteTest
         public ServerDatabase()
         {
             dB = new LoginDatabase();
+
+            server = new TCPServer();
         }
         
     }
