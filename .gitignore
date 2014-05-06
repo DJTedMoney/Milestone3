@@ -26,8 +26,8 @@
 /ServerDatabase/x64/
 /ServerDatabase/build/
 /ServerDatabase/bld/
-/ServerDatabase/[Bb]in/
-/ServerDatabase/[Oo]bj/
+/ServerDatabase/ServerDatabase/[Bb]in/
+/ServerDatabase/ServerDatabase/[Oo]bj/
 
 # Roslyn cache directories
 *.ide/
