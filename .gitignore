@@ -7,3 +7,5 @@
 /Whale/*.unityproj
 /Whale/*.sln
 /Whale/*.userprefs
+
+/ServerDatabase/*.suo
