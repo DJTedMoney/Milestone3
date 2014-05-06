@@ -7,7 +7,7 @@ namespace SQLiteTest
 
     class ServerDatabase
     {
-        static LoginDatabase dB;
+        // static LoginDatabase dB;
 
         static TCPServer server;
 
@@ -15,26 +15,26 @@ namespace SQLiteTest
         
         static void Main(string[] args)
         {
-            dB.createNewDatabase();
-            dB.connectToDatabase();
+            // server.dB.createNewDatabase();
+            TCPServer.dB.connectToDatabase();
 
-            dB.createTable();
+            TCPServer.dB.createTable();
 
-            dB.fillTable();
+            TCPServer.dB.fillTable();
 
-            dB.login("Farble", "deblarg");
-            dB.login("glory", "power");
-            dB.login("Farble", "deblarg");
+            TCPServer.dB.login("Farble", "deblarg");
+            TCPServer.dB.login("glory", "power");
+            TCPServer.dB.login("Farble", "deblarg");
 
-            dB.login("Myself", "6000");
-            dB.login("Myself", "asdf");
+            TCPServer.dB.login("Myself", "6000");
+            TCPServer.dB.login("Myself", "asdf");
 
-            dB.printUsers();
+            TCPServer.dB.printUsers();
         }
 
         public ServerDatabase()
         {
-            dB = new LoginDatabase();
+            TCPServer.dB = new LoginDatabase();
 
             server = new TCPServer();
         }

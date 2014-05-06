@@ -1,7 +1,4 @@
-using UnityEngine;
-using System.Collections;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +9,9 @@ using System.Security.Cryptography;
 //      FOUND THIS EXAMPLE OF HOW TO USE THE CRYPTOGRAPHY LIBRARY FOR C#
 //      EXAMPLE FROM http://www.codeproject.com/Articles/463390/Password-Encryption-using-MD-Hash-Algorithm-in-Cs
 
+
+namespace SQLiteTest
+{
     public static class Encryptor
     {
         public static string encryptString(string token)
@@ -36,3 +36,4 @@ using System.Security.Cryptography;
             return encryptedToken.ToString();
         }
     }
+}

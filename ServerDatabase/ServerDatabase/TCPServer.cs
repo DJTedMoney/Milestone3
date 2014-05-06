@@ -19,6 +19,8 @@ namespace SQLiteTest
         protected static PlayerSocket[] activePlayers = new PlayerSocket[numberPlayers];
         static Queue<string> movesMade;
 
+        public static LoginDatabase dB;
+
         public TCPServer()
         { // start constructor
             listener = new TcpListener(8008);
@@ -81,6 +83,8 @@ namespace SQLiteTest
                         movesMade.Enqueue(data);
 
                         string[] instruction = movesMade.Dequeue().Split(delimiter);
+
+                        // if string[0] == "l" -> command to attempt login 
 
                         // counting by w
                         for (int w = 0; w < numberPlayers; ++w)
