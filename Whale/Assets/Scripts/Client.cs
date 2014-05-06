@@ -21,6 +21,7 @@ public class Client : MonoBehaviour
 	static TcpClient client;
 	NetworkStream stream;
 	const String serverIP = "2";
+	private Thread clientThread;
 	
 	
 	// Use this for initialization
@@ -80,7 +81,9 @@ public class Client : MonoBehaviour
 			
 			//sends pre-encrypted username and password to server.
 			//if the Username and pasword do not match, the server will send a disconect command back
-    		Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$"+userName+"$"+pasword+"$");         
+    		Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$"+userName+"$"+
+															  Encryptor.encryptString("elephant")+
+															  "&"+pasword+"$");         
 
     		// Get a client stream for reading and writing. 
 		    stream = client.GetStream();
