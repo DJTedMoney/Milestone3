@@ -23,10 +23,15 @@ namespace SQLiteTest
 
         public TCPServer()
         { // start constructor
+
+            dB = new LoginDatabase();
+
             listener = new TcpListener(8008);
             listener.Start();
 
             movesMade = new Queue<string>();
+
+            
 
             Console.Write("Press Enter to start the server:  ");
             Console.Read();
@@ -56,6 +61,9 @@ namespace SQLiteTest
                 activePlayers[t].psThread.Start();
 
             } // end for loop 
+
+            
+
         } // end constructor
 
         public class ReadThread
@@ -84,13 +92,32 @@ namespace SQLiteTest
 
                         string[] instruction = movesMade.Dequeue().Split(delimiter);
 
-                        // if string[0] == "l" -> command to attempt login 
-
-                        // counting by w
-                        for (int w = 0; w < numberPlayers; ++w)
+                        // if instruction[0] == "1" -> command to attempt login
+                        // indexes of instruction   [0]     [1]                         [2]                         [3]
+                        // expected sentence:       1   $   userName (pre-encrypted) $  elephant (pre-crypted) $    password (pre-encrypted) $ 
+                        if (instruction[0] == "1")
                         {
-                            activePlayers[w].playerWriter.WriteLine(instruction);
+                            dB.login(instruction[1], instruction[3]);
+
+                            activePlayers[client].playerWriter.WriteLine(instruction);
                         }
+
+                        // if instruction[0] == "2" -> command to change directions
+                        // indexes of instruction   [0]     [1]                         [2]                                     [3]
+                        // expected sentence:       2 $     tostada (pre-crypted) $     { U D L R } $ "*****" (pre-crypt) $     { number of player who made the move }
+
+                        if (instruction[0] == "2")
+                        {
+                            // update direction that the indicated player is traveling 
+
+                            // counting by w
+                            for (int w = 0; w < numberPlayers; ++w)
+                            {
+                                activePlayers[w].playerWriter.WriteLine(instruction);
+                            }
+                        }
+
+                        
 
                     } // end game loop for a player
 
