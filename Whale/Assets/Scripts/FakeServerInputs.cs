@@ -142,7 +142,7 @@ public class FakeServerInputs : MonoBehaviour
 	
 	void sendMessage()
 	{
-		message = p1Pos.x.ToString() + "$" + p1Pos.y.ToString() + "$" + p1Dir.x.ToString() + "$" + 
+		message = "2$" + p1Pos.x.ToString() + "$" + p1Pos.y.ToString() + "$" + p1Dir.x.ToString() + "$" + 
 				  p1Dir.y.ToString() + "$" + p1Speed.ToString() + "$" + p1Size.ToString();
 		
 		//should add all 4 of the pellets' X and Y to the end of the message

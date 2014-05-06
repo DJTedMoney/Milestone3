@@ -11,3 +11,5 @@ C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\b
 C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\System.Data.SQLite.xml
 C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.exe
 C:\Users\Barbarois\Documents\gitRepos\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.pdb
+C:\Users\Nathan\Desktop\ics168\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\Nathan\Desktop\ics168\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.pdb

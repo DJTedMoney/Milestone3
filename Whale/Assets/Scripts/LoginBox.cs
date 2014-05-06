@@ -4,12 +4,13 @@ using System.Collections;
 public class LoginBox : MonoBehaviour 
 {
 	public string userName;
-	string passWord;
+	private string passWord;
 	
 	public GUIText grafxText;
 	public GameManager manager;
 	
 	public bool showLogin;
+	private const string ipAdress = "127.0.0.1";
 	
 	// Use this for initialization
 	void Start () 
@@ -38,9 +39,8 @@ public class LoginBox : MonoBehaviour
 			if(GUI.Button (new Rect (250, 170, 100, 20), "Connect") )
 			{
 				//grafxText.text = "Connect";
-				
-				showLogin = !showLogin;
-				manager.start = true;
+				manager.activeClient.Connect("127.0.0.1", Encryptor.encryptString(userName), 
+											 Encryptor.encryptString(passWord));
 			}
 		}
 		
@@ -51,7 +51,7 @@ public class LoginBox : MonoBehaviour
 			if(GUI.Button (new Rect(10, 10, 100, 20), "Disconnect") )
 			{
 				//grafxText.text = "Hello";
-				
+				manager.activeClient.Disconect();
 				showLogin = !showLogin;
 				manager.start = false;
 			}
