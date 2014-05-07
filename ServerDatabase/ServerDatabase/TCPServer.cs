@@ -31,7 +31,7 @@ namespace SQLiteTest
 
             movesMade = new Queue<string>();
 
-            
+            dB.connectToDatabase();
 
             Console.Write("Press Enter to start the server:  ");
             Console.Read();
@@ -66,7 +66,7 @@ namespace SQLiteTest
             } // end for loop 
 
 
-            dB.connectToDatabase();
+
 
         } // end constructor
 
