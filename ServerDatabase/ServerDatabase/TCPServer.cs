@@ -47,12 +47,12 @@ namespace SQLiteTest
                 // StreamWriter writer = new StreamWriter(nws);
                 //writer.AutoFlush = true;
 
-                Console.WriteLine("stream created");
+                // Console.WriteLine("stream created");
 
                 activePlayers[t] = new PlayerSocket(nws, sock);
                 activePlayers[t].connected = true;
 
-                Console.WriteLine(" connected true");
+                // Console.WriteLine(" connected true");
 
                 // string data = activePlayers[t].playerReader.ReadLine();
                 // Console.Write(data);
@@ -104,16 +104,21 @@ namespace SQLiteTest
                         //spliting the serverdata into instruction
                         string[] instruction = new string[11];
                         instruction[0] = responseData.Substring(0, responseData.IndexOf(delimiter));
-                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); ;
+                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); 
 
                         instruction[1] = responseData.Substring(0, responseData.IndexOf(delimiter));
-                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); ;
+                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); 
 
                         instruction[2] = responseData.Substring(0, responseData.IndexOf(delimiter));
-                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); ;
+                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); 
 
                         instruction[3] = responseData.Substring(0, responseData.IndexOf(delimiter));
-                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); ;
+                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1);
+
+                        Console.Write("Instruction [0] " + instruction[0] + " ; ");
+                        Console.Write("Instruction [1] " + instruction[1] + " ; ");
+                        Console.Write("Instruction [2] " + instruction[2] + " ; ");
+                        Console.Write("Instruction [3] " + instruction[3] + " ; ");
 
                         // if instruction[0] == "1" -> command to attempt login
                         // indexes of instruction   [0]     [1]                         [2]                         [3]
