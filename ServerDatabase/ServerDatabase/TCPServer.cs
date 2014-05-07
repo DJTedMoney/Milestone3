@@ -126,7 +126,7 @@ namespace SQLiteTest
                             // Send the message to the connected TcpServer. 
                             activePlayers[client].psnws.Write(sendData, 0, sendData.Length);
 
-                            Console.WriteLine("Sent: ", "1$" + client.ToString());
+                            Console.WriteLine("Sent: " + "1$" + client.ToString());
                         }
 
                         // if instruction[0] == "2" -> command to change directions
