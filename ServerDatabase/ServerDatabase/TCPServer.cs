@@ -65,7 +65,8 @@ namespace SQLiteTest
                 Console.Write("bottom of for loop!\n");
             } // end for loop 
 
-            
+
+            dB.connectToDatabase();
 
         } // end constructor
 

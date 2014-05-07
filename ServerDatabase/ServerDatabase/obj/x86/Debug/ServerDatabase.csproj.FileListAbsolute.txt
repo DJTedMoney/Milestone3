@@ -19,3 +19,10 @@ C:\Users\Nathan\Desktop\ics168\Milestone3\ServerDatabase\ServerDatabase\bin\Debu
 C:\Users\Nathan\Desktop\ics168\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\System.Data.SQLite.dll
 C:\Users\Nathan\Desktop\ics168\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\System.Data.SQLite.xml
 C:\Users\Nathan\Desktop\ics168\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ServerDatabase.csprojResolveAssemblyReference.cache
+E:\School\UCI\Spring 14\ICS 168 Networking Project\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.exe
+E:\School\UCI\Spring 14\ICS 168 Networking Project\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ConsoleApplication1.pdb
+E:\School\UCI\Spring 14\ICS 168 Networking Project\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\ConsoleApplication1.exe
+E:\School\UCI\Spring 14\ICS 168 Networking Project\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\ConsoleApplication1.pdb
+E:\School\UCI\Spring 14\ICS 168 Networking Project\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\System.Data.SQLite.dll
+E:\School\UCI\Spring 14\ICS 168 Networking Project\Milestone3\ServerDatabase\ServerDatabase\bin\Debug\System.Data.SQLite.xml
+E:\School\UCI\Spring 14\ICS 168 Networking Project\Milestone3\ServerDatabase\ServerDatabase\obj\x86\Debug\ServerDatabase.csprojResolveAssemblyReference.cache
