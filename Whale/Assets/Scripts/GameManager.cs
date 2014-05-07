@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
 		{
 			string tempCommand = serverCommand.Dequeue().ToString();
 			string comType = tempCommand.Substring(0,tempCommand.IndexOf(delim));
+			tempCommand= tempCommand.Substring(tempCommand.IndexOf(delim)+1);
 			
 			//Server Disconectd Client
 			if(comType.Equals("0"))
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
 			{
 				start = true;
 				guiBox.showLogin = !guiBox.showLogin;
+				guiBox.grafxText.text = "Connected";
 			}
 			//Server sent Move commands to client
 			if(move == true && comType.Equals("2"))
