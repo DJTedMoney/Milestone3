@@ -38,9 +38,12 @@ public class LoginBox : MonoBehaviour
 			
 			if(GUI.Button (new Rect (250, 170, 100, 20), "Connect") )
 			{
+				manager.start = true;
+				showLogin = !showLogin;
 				//grafxText.text = "Connect";
 				manager.activeClient.Connect("127.0.0.1", Encryptor.encryptString(userName), 
 											 Encryptor.encryptString(passWord));
+				
 			}
 		}
 		

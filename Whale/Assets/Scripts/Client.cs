@@ -93,7 +93,7 @@ public class Client : MonoBehaviour
 			//if the Username and pasword do not match, the server will send a disconect command back
     		Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$"+userName+"$"+
 															  Encryptor.encryptString("elephant")+
-															  "&"+pasword+"$");         
+															  "$"+pasword+"$");         
 
     		// Get a client stream for reading and writing. 
 		    stream = client.GetStream();

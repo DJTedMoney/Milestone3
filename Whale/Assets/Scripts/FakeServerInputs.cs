@@ -64,9 +64,9 @@ public class FakeServerInputs : MonoBehaviour
 			xFlag = false;
 			yFlag = false;
 			xDif = Mathf.Abs(p1Pos.x-pelletPos[i].x);
-			print ("xdif = " + xDif);
+			//print ("xdif = " + xDif);
 			yDif = Mathf.Abs(p1Pos.y-pelletPos[i].y);
-			print ("ydif = " + yDif);
+			//print ("ydif = " + yDif);
 			if(xDif <= ((p1Size)/2 + 20))
 				xFlag = true;
 			if(yDif <= (p1Size/2 + 20))
@@ -150,8 +150,7 @@ public class FakeServerInputs : MonoBehaviour
 			message = message + "$" + pelletPos[i].x.ToString() + "$" + pelletPos[i].y.ToString();
 		}
 		message += "$";
-		
-		print("From Server: " + message);
+		//print("From Server: " + message);
 		
 		//This will eventualy be TCP code to send message to the client
 		activeClient.doMove(message);

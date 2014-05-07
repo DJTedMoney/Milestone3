@@ -48,8 +48,6 @@ namespace SQLiteTest
                 writer.AutoFlush = true;
 
                 activePlayers[t] = new PlayerSocket(nws, sock, reader, writer);
-
-                activePlayers[t].playerWriter.WriteLine(t);
                 activePlayers[t].connected = true;
 
                 string data = activePlayers[t].playerReader.ReadLine();
@@ -99,7 +97,7 @@ namespace SQLiteTest
                         {
                             dB.login(instruction[1], instruction[3]);
 
-                            activePlayers[client].playerWriter.WriteLine(instruction);
+                            activePlayers[client].playerWriter.WriteLine("1$" + client.ToString());
                         }
 
                         // if instruction[0] == "2" -> command to change directions

@@ -95,13 +95,15 @@ public class GameManager : MonoBehaviour
 			{
 				guiBox.grafxText.text = "error, wrong pasword\ndisconected from server";
 				activeClient.Disconnect();
+				start = false;
+				guiBox.showLogin = !guiBox.showLogin;
 			}
 			//Server connected client
 			else if(comType.Equals("1"))
 			{
-				start = true;
-				guiBox.showLogin = !guiBox.showLogin;
 				guiBox.grafxText.text = "Connected";
+				clientNumber = int.Parse(tempCommand.Substring(0,tempCommand.IndexOf(delim)));
+				tempCommand = tempCommand= tempCommand.Substring(tempCommand.IndexOf(delim)+1);
 			}
 			//Server sent Move commands to client
 			if(move == true && comType.Equals("2"))
@@ -132,7 +134,7 @@ public class GameManager : MonoBehaviour
 				for(int i = 0; i < 4; i++)
 				{
 					
-					print ("i = " + i+ "\ncomand: " + tempCommand);
+					
 					tempX = (int)float.Parse(tempCommand.Substring(0,tempCommand.IndexOf(delim)));
 					tempCommand = tempCommand.Substring(tempCommand.IndexOf(delim)+1);
 					tempY = (int)float.Parse(tempCommand.Substring(0,tempCommand.IndexOf(delim)));
