@@ -110,7 +110,7 @@ public class Client : MonoBehaviour
 	
 	public void Disconnect()
 	{
-		stream.Close();
+		//stream.Close();
 		client.Close ();
 		clientThread.Abort();
 	}
