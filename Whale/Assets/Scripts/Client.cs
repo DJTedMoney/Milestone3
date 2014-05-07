@@ -16,11 +16,14 @@ public class Client : MonoBehaviour
 	public GameManager manager;
 	public FakeServerInputs server;
 	public string message;
+	
 	static TcpClient client;
 	NetworkStream stream;
 	const String serverIP = "2";
-	private Thread clientThread;
 	
+	private Thread clientThread;
+	StreamReader playerReader;
+	StreamWriter playerWriter;
 	
 	// Use this for initialization
 	void Start () 
@@ -28,6 +31,7 @@ public class Client : MonoBehaviour
 		manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		server = GameObject.Find ("FakeServer").GetComponent<FakeServerInputs>();
 		message = "";
+		
 	}
 	
 	// Update is called once per frame
