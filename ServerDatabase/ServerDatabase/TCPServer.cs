@@ -99,7 +99,7 @@ namespace SQLiteTest
                         // Read the TcpClient response bytes.
                         Int32 bytes = activePlayers[client].psnws.Read(data, 0, data.Length);
                         responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-                        Console.WriteLine("Received: ", responseData);
+                        Console.WriteLine("Received: " + responseData);
 
                         //spliting the serverdata into instruction
                         string[] instruction = new string[11];
@@ -121,8 +121,12 @@ namespace SQLiteTest
                         if (instruction[0] == "1")
                         {
                             dB.login(instruction[1], instruction[3]);
+                            Byte[] sendData = System.Text.Encoding.ASCII.GetBytes("1$" + client.ToString());
 
-                            activePlayers[client].playerWriter.WriteLine("1$" + client.ToString());
+                            // Send the message to the connected TcpServer. 
+                            activePlayers[client].psnws.Write(sendData, 0, sendData.Length);
+
+                            Console.WriteLine("Sent: ", "1$" + client.ToString());
                         }
 
                         // if instruction[0] == "2" -> command to change directions
