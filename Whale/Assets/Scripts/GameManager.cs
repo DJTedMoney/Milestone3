@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 	public bool send;
 	public bool start;
 	LoginBox guiBox;
+	public int clientNumber;
 	
 	// Use this for initialization
 	void Start () 
