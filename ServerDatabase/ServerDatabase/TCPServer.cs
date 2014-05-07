@@ -43,16 +43,21 @@ namespace SQLiteTest
                 Console.WriteLine("Player Socket has accepted the socket");
 
                 NetworkStream nws = new NetworkStream(sock);
-                StreamReader reader = new StreamReader(nws);
-                StreamWriter writer = new StreamWriter(nws);
-                writer.AutoFlush = true;
+                //StreamReader reader = new StreamReader(nws);
+               // StreamWriter writer = new StreamWriter(nws);
+               // writer.AutoFlush = true;
 
-                activePlayers[t] = new PlayerSocket(nws, sock, reader, writer);
+                Console.WriteLine("stream created");
+
+                activePlayers[t] = new PlayerSocket(nws, sock);
                 activePlayers[t].connected = true;
 
-                string data = activePlayers[t].playerReader.ReadLine();
-                Console.Write(data);
+                Console.WriteLine(" connected true");
 
+                // string data = activePlayers[t].playerReader.ReadLine();
+                // Console.Write(data);
+
+                // creates a ReadThread, passes in the player value t
                 ReadThread thread = new ReadThread(t);
 
                 activePlayers[t].psThread = new Thread(new ThreadStart(thread.Service) );
@@ -66,6 +71,7 @@ namespace SQLiteTest
 
         public class ReadThread
         { // start readThread class 
+
             int client = -1;
             char delimiter = '$';
             string clientString;
@@ -83,10 +89,16 @@ namespace SQLiteTest
 
                     while (activePlayers[client].connected)
                     { // actual game loop for an individual player
-                        string data = activePlayers[client].playerReader.ReadLine();
-                        Console.WriteLine("before delimiter print " + data);
 
-                        movesMade.Enqueue(data);
+                        Byte[] data = new Byte[256];
+
+                        // String to store the response ASCII representation.
+                        String responseData = String.Empty;
+
+                        // Read the TcpClient response bytes.
+                        Int32 bytes = activePlayers[client].psnws.Read(data, 0, data.Length);
+                        responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+                        Console.WriteLine("Received: ", responseData);
 
                         string[] instruction = movesMade.Dequeue().Split(delimiter);
 

@@ -49,6 +49,7 @@ public class Client : MonoBehaviour
 		{
 			//sends the movement change command to server
 		 	// Translate the passed message into ASCII and store it as a Byte array.
+			print ("sending message to server");
     		Byte[] data = System.Text.Encoding.ASCII.GetBytes(inputMove);
 
     		// Send the message to the connected TcpServer. 
@@ -61,6 +62,7 @@ public class Client : MonoBehaviour
 	//gets move data from server and sends it to gameManager
 	public void doMove(string newMove)
 	{
+		print ("doing move");
 		//sends velocity change comand to gameManager
 			manager.move = true;
 			
@@ -91,10 +93,10 @@ public class Client : MonoBehaviour
 			
 			//sends pre-encrypted username and password to server.
 			//if the Username and password do not match, the server will send a disconect command back
-			print ("UserName: " +userName);
-			print ("Password: " +password);
-    		Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$"+userName+"$"+
-															  Encryptor.encryptString("elephant")+
+			print ("UserName: " + userName);
+			print ("Password: " + password);
+    		Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$" + userName + "$" +
+															  Encryptor.encryptString("elephant") +
 															  "$"+password+"$");         
 
     		// Get a client stream for reading and writing. 
@@ -118,7 +120,4 @@ public class Client : MonoBehaviour
 		stream.Close();
 		client.Close ();
 	}
-	
-	
-	
 }

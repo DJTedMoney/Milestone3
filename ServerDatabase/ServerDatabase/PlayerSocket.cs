@@ -32,12 +32,12 @@ namespace SQLiteTest
         public StreamReader playerReader;
         public StreamWriter playerWriter;
 
-        public PlayerSocket(NetworkStream newStream, Socket newSocket, StreamReader newSR, StreamWriter newSW)
+        public PlayerSocket(NetworkStream newStream, Socket newSocket /*,StreamReader newSR, StreamWriter newSW*/)
         {
             psnws = newStream;
             pSock = newSocket;
-            playerReader = newSR;
-            playerWriter = newSW;
+            //playerReader = newSR;
+            //playerWriter = newSW;
 
             updates = new Queue<string>();
         }
