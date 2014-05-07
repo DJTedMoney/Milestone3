@@ -40,6 +40,8 @@ public class LoginBox : MonoBehaviour
 			{
 				manager.start = true;
 				showLogin = !showLogin;
+				print ("<From LoginBox>UserName: " +Encryptor.encryptString(userName));
+			print ("<From LoginBox>Password: " +Encryptor.encryptString(passWord));;
 				//grafxText.text = "Connect";
 				manager.activeClient.Connect("127.0.0.1", Encryptor.encryptString(userName), 
 											 Encryptor.encryptString(passWord));

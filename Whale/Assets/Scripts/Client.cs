@@ -80,7 +80,7 @@ public class Client : MonoBehaviour
 		}
 	}
 	
-	public void Connect(String server, string userName, string pasword) 
+	public void Connect(String server, string userName, string password) 
 	{
   		try 
   		{
@@ -90,10 +90,12 @@ public class Client : MonoBehaviour
 			
 			
 			//sends pre-encrypted username and password to server.
-			//if the Username and pasword do not match, the server will send a disconect command back
+			//if the Username and password do not match, the server will send a disconect command back
+			print ("UserName: " +userName);
+			print ("Password: " +password);
     		Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$"+userName+"$"+
 															  Encryptor.encryptString("elephant")+
-															  "$"+pasword+"$");         
+															  "$"+password+"$");         
 
     		// Get a client stream for reading and writing. 
 		    stream = client.GetStream();

@@ -133,8 +133,6 @@ public class GameManager : MonoBehaviour
 				//sets pellet position
 				for(int i = 0; i < 4; i++)
 				{
-					
-					
 					tempX = (int)float.Parse(tempCommand.Substring(0,tempCommand.IndexOf(delim)));
 					tempCommand = tempCommand.Substring(tempCommand.IndexOf(delim)+1);
 					tempY = (int)float.Parse(tempCommand.Substring(0,tempCommand.IndexOf(delim)));

@@ -23,7 +23,7 @@ using System.Security.Cryptography;
 
             StringBuilder encryptedToken = new StringBuilder();
 
-            for (int i = 0; i < encryptedToken.Length; i++)
+            for (int i = 0; i < hashedToken.Length; i++)
             {
                 //change it into 2 hexadecimal digits
                 //for each byte

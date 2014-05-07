@@ -15,7 +15,7 @@ namespace SQLiteTest
     class TCPServer
     {
         static TcpListener listener;
-        const int numberPlayers = 4;
+        const int numberPlayers = 1;
         protected static PlayerSocket[] activePlayers = new PlayerSocket[numberPlayers];
         static Queue<string> movesMade;
 
@@ -57,7 +57,7 @@ namespace SQLiteTest
 
                 activePlayers[t].psThread = new Thread(new ThreadStart(thread.Service) );
                 activePlayers[t].psThread.Start();
-
+                Console.Write("bottom of for loop!\n");
             } // end for loop 
 
             
