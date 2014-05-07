@@ -91,10 +91,10 @@ public class Client : MonoBehaviour
 			
 			//sends pre-encrypted username and password to server.
 			//if the Username and password do not match, the server will send a disconect command back
-			print ("UserName: " +userName);
-			print ("Password: " +password);
-    		Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$"+userName+"$"+
-															  Encryptor.encryptString("elephant")+
+			print ("UserName: " + userName);
+			print ("Password: " + password);
+    		Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$" + userName + "$" +
+															  Encryptor.encryptString("elephant") +
 															  "$"+password+"$");         
 
     		// Get a client stream for reading and writing. 
@@ -118,7 +118,4 @@ public class Client : MonoBehaviour
 		stream.Close();
 		client.Close ();
 	}
-	
-	
-	
 }

@@ -47,12 +47,17 @@ namespace SQLiteTest
                 StreamWriter writer = new StreamWriter(nws);
                 writer.AutoFlush = true;
 
+                Console.WriteLine("stream created");
+
                 activePlayers[t] = new PlayerSocket(nws, sock, reader, writer);
                 activePlayers[t].connected = true;
 
-                string data = activePlayers[t].playerReader.ReadLine();
-                Console.Write(data);
+                Console.WriteLine(" connected true");
 
+                // string data = activePlayers[t].playerReader.ReadLine();
+                // Console.Write(data);
+
+                // creates a ReadThread, passes in the player value t
                 ReadThread thread = new ReadThread(t);
 
                 activePlayers[t].psThread = new Thread(new ThreadStart(thread.Service) );
@@ -66,6 +71,7 @@ namespace SQLiteTest
 
         public class ReadThread
         { // start readThread class 
+
             int client = -1;
             char delimiter = '$';
             string clientString;
