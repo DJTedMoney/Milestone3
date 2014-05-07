@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Encryptor.cs" />
     <Compile Include="LoginDatabase.cs" />
     <Compile Include="PlayerSocket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
