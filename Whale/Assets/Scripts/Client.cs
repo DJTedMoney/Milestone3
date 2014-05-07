@@ -21,7 +21,7 @@ public class Client : MonoBehaviour
 	
 	static TcpClient client;
 	NetworkStream stream;
-	const String serverIP = "2";
+	const String serverIP = "128.195.11.143";
 	
 	private Thread clientThread;
 	StreamReader playerReader;
@@ -139,6 +139,7 @@ public class Client : MonoBehaviour
 
     			// Send the message to the connected TcpServer. 
 		    	stream.Write(data, 0, data.Length);
+				stream.Flush();
 	
     			Console.WriteLine("Sent: " + message);
 			}

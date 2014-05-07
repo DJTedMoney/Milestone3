@@ -100,7 +100,7 @@ namespace SQLiteTest
                         Int32 buffer;
                         try
                         {
-                            buffer = activePlayers[client].psnws.Read(data, 0, data.Length);
+                            buffer = activePlayers[client].psnws.Read(data, 0, 4096);
                             responseData = System.Text.Encoding.ASCII.GetString(data, 0, buffer);
                             Console.WriteLine("Received: " + responseData);
                         }
