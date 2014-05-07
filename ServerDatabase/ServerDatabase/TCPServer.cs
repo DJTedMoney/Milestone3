@@ -26,7 +26,7 @@ namespace SQLiteTest
 
             dB = new LoginDatabase();
 
-            listener = new TcpListener(8008);
+            listener = new TcpListener(4300);
             listener.Start();
 
             movesMade = new Queue<string>();

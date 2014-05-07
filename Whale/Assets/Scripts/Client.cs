@@ -83,7 +83,7 @@ public class Client : MonoBehaviour
   		try 
   		{
     		// Create a TcpClient.
-    		Int32 port = 8008;
+    		Int32 port = 4300;
     		client = new TcpClient(server, port);
 			
 			
