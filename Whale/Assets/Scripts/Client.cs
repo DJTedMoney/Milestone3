@@ -16,6 +16,8 @@ public class Client : MonoBehaviour
 	public GameManager manager;
 	public FakeServerInputs server;
 	public string message;
+	string use;
+	string pass;
 	
 	static TcpClient client;
 	NetworkStream stream;
@@ -24,6 +26,9 @@ public class Client : MonoBehaviour
 	private Thread clientThread;
 	StreamReader playerReader;
 	StreamWriter playerWriter;
+	bool isConnect;
+	bool sendData;
+	bool getData;
 	
 	// Use this for initialization
 	void Start () 
@@ -31,6 +36,11 @@ public class Client : MonoBehaviour
 		manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		server = GameObject.Find ("FakeServer").GetComponent<FakeServerInputs>();
 		message = "";
+		isConnect = false;
+		sendData = false;
+		getData = false;
+		use = "";
+		pass = "";
 		
 	}
 	
@@ -50,12 +60,8 @@ public class Client : MonoBehaviour
 			//sends the movement change command to server
 		 	// Translate the passed message into ASCII and store it as a Byte array.
 			print ("sending message to server");
-    		Byte[] data = System.Text.Encoding.ASCII.GetBytes(inputMove);
-
-    		// Send the message to the connected TcpServer. 
-		    stream.Write(data, 0, data.Length);
-
-    		Console.WriteLine("Sent: ", inputMove);
+			message = inputMove;
+			sendData = true;
 		}
 	}
 	
@@ -64,21 +70,11 @@ public class Client : MonoBehaviour
 	{
 		print ("doing move");
 		//sends velocity change comand to gameManager
-			manager.move = true;
-			
 		if(manager.start)
 		{
+			manager.move = true;
 			manager.serverCommand.Enqueue(newMove);
-			Byte[] data = new Byte[256];
-    		
-		// String to store the response ASCII representation.
-    		String responseData = String.Empty;
-
-    		// Read the first batch of the TcpServer response bytes.
-    		Int32 bytes = stream.Read(data, 0, data.Length);
-    		responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-    		Console.WriteLine("Received: ", responseData);
-			manager.serverCommand.Enqueue(responseData);
+			sendData = true;
 		}
 	}
 	
@@ -95,15 +91,11 @@ public class Client : MonoBehaviour
 			//if the Username and password do not match, the server will send a disconect command back
 			print ("UserName: " + userName);
 			print ("Password: " + password);
-    		Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$" + userName + "$" +
-															  Encryptor.encryptString("elephant") +
-															  "$"+password+"$");         
-
-    		// Get a client stream for reading and writing. 
-		    stream = client.GetStream();
-
-    		// Send the message to the connected TcpServer. 
-		    stream.Write(data, 0, data.Length);
+			use = userName;
+			pass = password;
+		    clientThread = new Thread(new ThreadStart(serverIO));
+			use = "";
+			pass = "";
   		} 
   		catch (ArgumentNullException e) 
   		{
@@ -119,5 +111,49 @@ public class Client : MonoBehaviour
 	{
 		stream.Close();
 		client.Close ();
+		clientThread.Abort();
+	}
+	
+	public void serverIO()
+	{
+		while(manager.start)
+		{
+			if(manager.start && isConnect)
+			{
+				Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$" + use + "$" +
+															  	Encryptor.encryptString("elephant") +
+															  	"$"+pass+"$");         
+	
+    			// Get a client stream for reading and writing. 
+		    	stream = client.GetStream();
+	
+    			// Send the message to the connected TcpServer. 
+		    	stream.Write(data, 0, data.Length);
+				isConnect = false;
+			}
+			
+			if(sendData)
+			{	
+    			Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
+
+    			// Send the message to the connected TcpServer. 
+		    	stream.Write(data, 0, data.Length);
+	
+    			Console.WriteLine("Sent: " + message);
+			}
+			if(getData)
+			{
+				Byte[] data = new Byte[256];
+    		
+				// String to store the response ASCII representation.
+    			String responseData = String.Empty;
+
+    			// Read the first batch of the TcpServer response bytes.
+    			Int32 bytes = stream.Read(data, 0, data.Length);
+    			responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+    			Console.WriteLine("Received: ", responseData);
+				manager.serverCommand.Enqueue(responseData);
+			}
+		}
 	}
 }
