@@ -121,8 +121,12 @@ namespace SQLiteTest
                         if (instruction[0] == "1")
                         {
                             dB.login(instruction[1], instruction[3]);
+                            Byte[] sendData = System.Text.Encoding.ASCII.GetBytes("1$" + client.ToString());
 
-                            activePlayers[client].playerWriter.WriteLine("1$" + client.ToString());
+                            // Send the message to the connected TcpServer. 
+                            activePlayers[client].psnws.Write(sendData, 0, sendData.Length);
+
+                            Console.WriteLine("Sent: ", "1$" + client.ToString());
                         }
 
                         // if instruction[0] == "2" -> command to change directions
