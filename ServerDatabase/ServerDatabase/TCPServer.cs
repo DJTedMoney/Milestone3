@@ -44,8 +44,8 @@ namespace SQLiteTest
 
                 NetworkStream nws = new NetworkStream(sock);
                 //StreamReader reader = new StreamReader(nws);
-               // StreamWriter writer = new StreamWriter(nws);
-               // writer.AutoFlush = true;
+                // StreamWriter writer = new StreamWriter(nws);
+                //writer.AutoFlush = true;
 
                 Console.WriteLine("stream created");
 
@@ -100,7 +100,19 @@ namespace SQLiteTest
                         responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
                         Console.WriteLine("Received: ", responseData);
 
-                        string[] instruction = movesMade.Dequeue().Split(delimiter);
+                        //spliting the serverdata into instruction
+                        string[] instruction = new string[11];
+                        instruction[0] = responseData.Substring(0, responseData.IndexOf(delimiter));
+                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); ;
+
+                        instruction[1] = responseData.Substring(0, responseData.IndexOf(delimiter));
+                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); ;
+
+                        instruction[2] = responseData.Substring(0, responseData.IndexOf(delimiter));
+                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); ;
+
+                        instruction[3] = responseData.Substring(0, responseData.IndexOf(delimiter));
+                        responseData = responseData = responseData.Substring(responseData.IndexOf(delimiter) + 1); ;
 
                         // if instruction[0] == "1" -> command to attempt login
                         // indexes of instruction   [0]     [1]                         [2]                         [3]
@@ -121,6 +133,8 @@ namespace SQLiteTest
                             // update direction that the indicated player is traveling 
 
                             // counting by w
+
+
                             for (int w = 0; w < numberPlayers; ++w)
                             {
                                 activePlayers[w].playerWriter.WriteLine(instruction);
