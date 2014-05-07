@@ -43,23 +43,30 @@ public class Client : MonoBehaviour
 	//sends move request to "server" from gameManager
 	public void requestMove(string inputMove)
 	{
-		//sends the movement change command to server
-		 // Translate the passed message into ASCII and store it as a Byte array.
+		server.getMessage(inputMove);
+		
+		if(manager.start)
+		{
+			//sends the movement change command to server
+		 	// Translate the passed message into ASCII and store it as a Byte array.
     		Byte[] data = System.Text.Encoding.ASCII.GetBytes(inputMove);
 
     		// Send the message to the connected TcpServer. 
 		    stream.Write(data, 0, data.Length);
 
     		Console.WriteLine("Sent: ", inputMove);
+		}
 	}
 	
 	//gets move data from server and sends it to gameManager
 	public void doMove(string newMove)
 	{
 		//sends velocity change comand to gameManager
-			manager.serverCommand.Enqueue(newMove);
 			manager.move = true;
 			
+		if(manager.start)
+		{
+			manager.serverCommand.Enqueue(newMove);
 			Byte[] data = new Byte[256];
     		
 		// String to store the response ASCII representation.
@@ -69,7 +76,8 @@ public class Client : MonoBehaviour
     		Int32 bytes = stream.Read(data, 0, data.Length);
     		responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
     		Console.WriteLine("Received: ", responseData);
-		manager.serverCommand.Enqueue(responseData);
+			manager.serverCommand.Enqueue(responseData);
+		}
 	}
 	
 	public void Connect(String server, string userName, string pasword) 
