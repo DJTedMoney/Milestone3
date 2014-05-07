@@ -51,7 +51,7 @@ public class LoginBox : MonoBehaviour
 			if(GUI.Button (new Rect(10, 10, 100, 20), "Disconnect") )
 			{
 				//grafxText.text = "Hello";
-				manager.activeClient.Disconect();
+				manager.activeClient.Disconnect();
 				showLogin = !showLogin;
 				manager.start = false;
 			}

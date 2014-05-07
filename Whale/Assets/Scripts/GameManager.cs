@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 			//Server Disconectd Client
 			if(comType.Equals("0"))
 			{
-				guiBox.graphText.text = "error, disconected from server";
+				guiBox.grafxText.text = "error, disconected from server";
 				activeClient.Disconnect();
 			}
 			//Server connected client
@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 			{
 				start = true;
 				guiBox.showLogin = !guiBox.showLogin;
-				guiBox.graphText = "Connected";
+				guiBox.grafxText.text = "Connected";
 			}
 			//Server sent Move commands to client
 			if(move == true && comType.Equals("2"))
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 			//writes the server command to the gui
 			else if(comType.Equals("3"))
 			{
-				guiBox.grafxText = tempCommand.Substring(tempCommand.IndexOf(delim));
+				guiBox.grafxText.text = tempCommand.Substring(tempCommand.IndexOf(delim));
 			}
 		}
 	}

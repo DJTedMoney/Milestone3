@@ -8,8 +8,6 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 
-using System.Security.Cryptography;
-
 using UnityEngine;
 using System.Collections;
 
@@ -70,7 +68,7 @@ public class Client : MonoBehaviour
 		manager.serverCommand.Enqueue(responseData);
 	}
 	
-	public void Connect(String server, String userName, string pasword) 
+	public void Connect(String server, string userName, string pasword) 
 	{
   		try 
   		{
