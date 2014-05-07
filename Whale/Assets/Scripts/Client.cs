@@ -94,6 +94,7 @@ public class Client : MonoBehaviour
 			use = userName;
 			pass = password;
 		    clientThread = new Thread(new ThreadStart(serverIO));
+			clientThread.Start();
 			use = "";
 			pass = "";
   		} 

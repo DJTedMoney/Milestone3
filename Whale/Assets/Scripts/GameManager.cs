@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
 	{		print ("applyMove");
 		//loads the next server command and reads the first command
 		//The first command is the command type (0 = disconect, 1 = connect, 2 = move)
-		if(serverCommand.Count != 0)
+		while(serverCommand.Count != 0)
 		{
 			string tempCommand = serverCommand.Dequeue().ToString();
 			string comType = tempCommand.Substring(0,tempCommand.IndexOf(delim));
