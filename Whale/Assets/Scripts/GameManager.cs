@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 			//Server Disconectd Client
 			if(comType.Equals("0"))
 			{
-				guiBox.grafxText.text = "error, disconected from server";
+				guiBox.grafxText.text = "error, wrong pasword\ndisconected from server";
 				activeClient.Disconnect();
 			}
 			//Server connected client
@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
 			{
 				start = true;
 				guiBox.showLogin = !guiBox.showLogin;
-				guiBox.grafxText.text = "Connected";
 			}
 			//Server sent Move commands to client
 			if(move == true && comType.Equals("2"))
