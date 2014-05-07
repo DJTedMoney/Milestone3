@@ -99,7 +99,7 @@ namespace SQLiteTest
                         // Read the TcpClient response bytes.
                         Int32 bytes = activePlayers[client].psnws.Read(data, 0, data.Length);
                         responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-                        Console.WriteLine("Received: ", responseData);
+                        Console.WriteLine("Received: " + responseData);
 
                         //spliting the serverdata into instruction
                         string[] instruction = new string[11];
