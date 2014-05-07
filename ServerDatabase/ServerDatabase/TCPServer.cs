@@ -91,15 +91,23 @@ namespace SQLiteTest
                     while (activePlayers[client].connected)
                     { // actual game loop for an individual player
 
-                        Byte[] data = new Byte[256];
+                        Byte[] data = new Byte[4096];
 
                         // String to store the response ASCII representation.
                         String responseData = String.Empty;
 
                         // Read the TcpClient response bytes.
-                        Int32 bytes = activePlayers[client].psnws.Read(data, 0, data.Length);
-                        responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-                        Console.WriteLine("Received: " + responseData);
+                        Int32 buffer;
+                        try
+                        {
+                            buffer = activePlayers[client].psnws.Read(data, 0, data.Length);
+                            responseData = System.Text.Encoding.ASCII.GetString(data, 0, buffer);
+                            Console.WriteLine("Received: " + responseData);
+                        }
+                        catch (Exception arg)
+                        {
+                            Console.WriteLine("Exception: " + arg.Message);
+                        }
 
                         //spliting the serverdata into instruction
                         string[] instruction = new string[11];
