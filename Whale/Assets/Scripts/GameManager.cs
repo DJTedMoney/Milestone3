@@ -1,3 +1,7 @@
+// Andrew Franowicz 29297832
+// Jason Heckard  84851006
+// Nathan Stengel 28874701
+
 using UnityEngine;
 using System.Collections;
 
