@@ -121,45 +121,47 @@ public class Client : MonoBehaviour
 	
 	public void serverIO()
 	{
-		while(manager.start)
+		if(manager.start && isConnect)
 		{
-			if(manager.start && isConnect)
-			{
-				Byte[] data = System.Text.Encoding.ASCII.GetBytes("1$" + use + "$" +
-															  	Encryptor.encryptString("elephant") +
-															  	"$"+pass+"$");         
-	
-    			// Get a client stream for reading and writing. 
-		    	stream = client.GetStream();
-	
-    			// Send the message to the connected TcpServer. 
-		    	stream.Write(data, 0, data.Length);
-				isConnect = false;
-			}
-			
+			stream = client.GetStream();
+			message = "1$" + use + "$" + Encryptor.encryptString("elephant") + "$" + pass + "$";
+			sendMessage(stream);
+			isConnect = false;
+		}
+		while(manager.start)
+		{			
 			if(sendData)
 			{	
-    			Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
-
-    			// Send the message to the connected TcpServer. 
-		    	stream.Write(data, 0, data.Length);
-				stream.Flush();
-	
-    			Console.WriteLine("Sent: " + message);
+    			sendMessage(stream);
+				sendData = false;
 			}
-			if(getData)
-			{
-				Byte[] data = new Byte[256];
-    		
-				// String to store the response ASCII representation.
-    			String responseData = String.Empty;
-
-    			// Read the first batch of the TcpServer response bytes.
-    			Int32 bytes = stream.Read(data, 0, data.Length);
-    			responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-    			Console.WriteLine("Received: ", responseData);
-				manager.serverCommand.Enqueue(responseData);
-			}
+			
+			//reads a message
+			getMessage(stream);
 		}
+	}
+	
+	public void sendMessage(NetworkStream theStream)
+	{
+		if(message.Length >0)
+		{
+			Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
+   			// Send the message to the connected TcpServer. 
+		   	theStream.Write(data, 0, data.Length);
+			theStream.Flush();
+   			Console.WriteLine("Sent: " + message);
+		}
+	}
+	
+	public void getMessage(NetworkStream theStream)
+	{
+		Byte[] data = new Byte[256];
+    	// String to store the response ASCII representation.
+   		String responseData = String.Empty;
+		// Read the first batch of the TcpServer response bytes.
+    	Int32 bytes = theStream.Read(data, 0, data.Length);
+    	responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+    	Console.WriteLine("Received: ", responseData);
+		manager.serverCommand.Enqueue(responseData);
 	}
 }

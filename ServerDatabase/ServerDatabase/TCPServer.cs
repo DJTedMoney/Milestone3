@@ -80,6 +80,7 @@ namespace SQLiteTest
             int client = -1;
             char delimiter = '$';
             string clientString;
+            string responseData;
 
             public ReadThread(int newNumber)
             { // begin constructor
@@ -95,23 +96,7 @@ namespace SQLiteTest
                     while (activePlayers[client].connected)
                     { // actual game loop for an individual player
 
-                        Byte[] data = new Byte[4096];
-
-                        // String to store the response ASCII representation.
-                        String responseData = String.Empty;
-
-                        // Read the TcpClient response bytes.
-                        Int32 buffer;
-                        try
-                        {
-                            buffer = activePlayers[client].psnws.Read(data, 0, 4096);
-                            responseData = System.Text.Encoding.ASCII.GetString(data, 0, buffer);
-                            Console.WriteLine("Received: " + responseData);
-                        }
-                        catch (Exception arg)
-                        {
-                            Console.WriteLine("Exception: " + arg.Message);
-                        }
+                        getMessage(activePlayers[client].psnws);
 
                         //spliting the serverdata into instruction
                         string[] instruction = new string[11];
@@ -138,12 +123,8 @@ namespace SQLiteTest
                         if (instruction[0] == "1")
                         {
                             dB.login(instruction[1], instruction[3]);
-                            Byte[] sendData = System.Text.Encoding.ASCII.GetBytes("1$" + client.ToString());
-
-                            // Send the message to the connected TcpServer. 
-                            activePlayers[client].psnws.Write(sendData, 0, sendData.Length);
-
-                            Console.WriteLine("Sent: 1$" + client.ToString());
+                            sendMessage(activePlayers[client].psnws, "1$" + client.ToString());
+                            
                         }
 
                         // if instruction[0] == "2" -> command to change directions
@@ -159,10 +140,7 @@ namespace SQLiteTest
 
                             for (int w = 0; w < numberPlayers; ++w)
                             {
-                                Byte[] sendData = System.Text.Encoding.ASCII.GetBytes("2$");
-
-                                // Send the message to the connected TcpServer. 
-                                activePlayers[w].psnws.Write(sendData, 0, sendData.Length);
+                                sendMessage(activePlayers[client].psnws, "2$");
                             }
                         }
 
@@ -178,6 +156,35 @@ namespace SQLiteTest
                 }
                 
             } // end service
+
+            public void sendMessage(NetworkStream theStream, String message)
+            {
+                Byte[] sendData = System.Text.Encoding.ASCII.GetBytes(message);
+                // Send the message to the connected TcpServer. 
+                activePlayers[client].psnws.Write(sendData, 0, sendData.Length);
+                Console.WriteLine("Sent: " + message);
+            }
+
+            public void getMessage(NetworkStream theStream)
+            {
+                Byte[] data = new Byte[4096];
+
+                // String to store the response ASCII representation.
+                String responseData = String.Empty;
+
+                // Read the TcpClient response bytes.
+                Int32 buffer;
+                try
+                {
+                    buffer = theStream.Read(data, 0, 4096);
+                    responseData = System.Text.Encoding.ASCII.GetString(data, 0, buffer);
+                    Console.WriteLine("Received: " + responseData);
+                }
+                catch (Exception arg)
+                {
+                    Console.WriteLine("Exception: " + arg.Message);
+                }
+            }
 
         } // end readThread class
     }
